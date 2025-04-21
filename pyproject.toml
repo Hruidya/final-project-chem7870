@@ -1,0 +1,16 @@
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
+
+[project]
+authors = [
+   { name = "Aakash Gupta", "Hruidya Babu", "Jyotirsika Dalal" email = "hc2258@cornell.edu"},
+]
+name = "brownian_motion"
+version = "0.0.1"
+dependencies = [
+   "numpy",
+   "matplotlib",
+   "pytest",
+   "scipy",
+]
