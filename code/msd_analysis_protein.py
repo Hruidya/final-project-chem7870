@@ -5,7 +5,7 @@ This script computes and plots the mean squared displacement (MSD) from single-m
 for a protein undergoing underdamped Brownian motion in water. It uses numerical integration of the velocity
 autocorrelation function to calculate MSD in both x and y directions.
 
-The SMT dataset must contain three columns: 't' (time in seconds), 'x', and 'y' (positions in meters).
+The SMT dataset in the .csv format must contain three columns: 't' (time in seconds), 'x', and 'y' (positions in meters).
 """
 
 import numpy as np
