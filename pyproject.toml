@@ -16,5 +16,4 @@ dependencies = [
     "pandas",
     "pytest",
     "scipy",
-    "openpyxl"  # Required only for Excel input
 ]
