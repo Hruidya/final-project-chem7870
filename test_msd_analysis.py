@@ -14,7 +14,7 @@ from msd_analysis_protein import (
 @pytest.fixture(scope="module")
 def sample_data():
     # Load dataset from example directory
-    data_path = Path(__file__).resolve().parents[1] / "example" / "cleaned_protein_tracking.csv"
+    data_path = Path(__file__).resolve().parents[1] / "example" / "filename.csv"
     time, x, y = load_data(str(data_path))
     dt = np.mean(np.diff(time))
     return time, x, y, dt
