@@ -1,4 +1,4 @@
-This is a GitHub repository created by Mr. Aakash Gupta, Ms. Hruidya Babu and Ms. Jyotirsika Dalal for the purpose of their final project on the course CHEM7870 offered by C&amp;CB, Cornell University. The code package aims to simulate the underdamped Brownian motion of proteins with the help of experimental Single-Molecule Tracking data.
+This is a GitHub repository created by Mr. Aakash Gupta, Ms. Hruidya Babu and Ms. Jyotirsika Dalal for the purpose of their final project on the course CHEM7870 offered by C&amp;CB, Cornell University. The code package aims to simulate the underdamped Brownian motion of proteins in water with the help of experimental Single-Molecule Tracking data.
 
 # MSD Analysis for Single-Molecule Protein Tracking
 
@@ -47,4 +47,4 @@ A plot will be generated:
 
 - The analysis assumes zero initial position and velocity: \( x(0) = 0, v(0) = 0 \)
 - Temperature is set to 298.15 K (room temperature)
-- Solvent is assumed to be water (viscosity \( \eta = 1 	imes 10^{-3} \) Pa·s)
+- Solvent is assumed to be water (viscosity (eta) = 1*10^{-3} Pa·s)
