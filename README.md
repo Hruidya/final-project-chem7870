@@ -43,7 +43,7 @@ A plot will be generated:
 
 ---
 
-## 📌 Notes
+## Notes
 
 - The analysis assumes zero initial position and velocity: \( x(0) = 0, v(0) = 0 \)
 - Temperature is set to 298.15 K (room temperature)
