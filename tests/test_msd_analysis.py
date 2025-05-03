@@ -1,46 +1,59 @@
 import numpy as np
 import pandas as pd
-import pytest
+import matplotlib.pyplot as plt
 import sys
-from pathlib import Path
+sys.path.append('../code')  # To import from code directory
 
-# Add the code directory to sys.path
-sys.path.append(str(Path(__file__).resolve().parents[1] / "code"))
+from msd_analysis_protein import simulate_overdamped, compute_msd, compute_log_slope
 
-from msd_analysis_protein import (
-    load_data, compute_velocity, compute_vacf, compute_msd_from_vacf
-)
+# === Load dataset ===
+data = pd.read_csv("../examples/histone.csv")
 
-@pytest.fixture(scope="module")
-def sample_data():
-    # Load dataset from example directory
-    data_path = Path(__file__).resolve().parents[1] / "example" / "filename.csv"
-    time, x, y = load_data(str(data_path))
-    dt = np.mean(np.diff(time))
-    return time, x, y, dt
+# Assumed structure: time, x, y
+time_data = data['time'].values
+x_data = data['x'].values
+y_data = data['y'].values
 
-def test_data_loaded_correctly(sample_data):
-    time, x, y, _ = sample_data
-    assert len(time) == len(x) == len(y)
-    assert np.all(np.diff(time) > 0), "Time values must be strictly increasing."
+dt = time_data[1] - time_data[0]
+T = time_data[-1] - time_data[0]
+x0, y0 = x_data[0], y_data[0]
 
-def test_velocity_calculation(sample_data):
-    time, x, _, _ = sample_data
-    v_x = compute_velocity(x, time)
-    assert len(v_x) == len(x)
-    assert not np.isnan(v_x).any(), "Velocity contains NaNs."
+# === Simulate using extracted parameters ===
+inputs = {
+    'mass': 1e-20,  # dummy mass (not used in overdamped)
+    'radius': 1e-7,  # assumed particle size
+    'x0': x0,
+    'y0': y0,
+    'dt': dt,
+    'T': T,
+    'is_underdamped': False
+}
 
-def test_vacf_output(sample_data):
-    time, _, y, _ = sample_data
-    v_y = compute_velocity(y, time)
-    vacf = compute_vacf(v_y)
-    assert len(vacf) == len(v_y)
-    assert np.all(np.isfinite(vacf)), "VACF contains non-finite values."
+# From code/msd_analysis_protein.py
+from msd_analysis_protein import initialize_parameters
 
-def test_msd_monotonicity(sample_data):
-    time, x, _, dt = sample_data
-    v_x = compute_velocity(x, time)
-    vacf_x = compute_vacf(v_x)
-    msd_x = compute_msd_from_vacf(vacf_x, dt)
-    assert np.all(msd_x >= 0), "MSD must be non-negative."
-    assert np.all(np.diff(msd_x) >= 0), "MSD must be non-decreasing."
+gamma, D, N, time, kB, T_kelvin = initialize_parameters(inputs)
+x_sim, y_sim = simulate_overdamped(inputs, D, N)
+
+# === MSD from real data ===
+msd_x_data = compute_msd(x_data)
+msd_y_data = compute_msd(y_data)
+msd_data_total = msd_x_data + msd_y_data
+
+# === MSD from simulation ===
+msd_x_sim = compute_msd(x_sim)
+msd_y_sim = compute_msd(y_sim)
+msd_sim_total = msd_x_sim + msd_y_sim
+
+# === Slope comparisons ===
+slope_data, _ = compute_log_slope(time[1:], msd_data_total[1:], fit_range=(time[1], time[-1]/10))
+slope_sim, _ = compute_log_slope(time[1:], msd_sim_total[1:], fit_range=(time[1], time[-1]/10))
+
+print(f"Slope from real data   : {slope_data:.4f}")
+print(f"Slope from simulation  : {slope_sim:.4f}")
+print(f"Difference              : {abs(slope_sim - slope_data):.4e}")
+
+# === Test pass condition ===
+assert np.isclose(slope_data, slope_sim, rtol=1e-2), "Slopes do not match within tolerance!"
+
+print("✅ Test passed: MSD slopes match closely between real data and simulation.")
