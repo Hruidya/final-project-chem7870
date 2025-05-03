@@ -1,4 +1,4 @@
-This is a GitHub repository created by Mr. Aakash Gupta, Ms. Hruidya Babu and Ms. Jyotirsika Dalal for the purpose of their final project on the course CHEM7870 offered by C&amp;CB, Cornell University. The code package aims to simulate the underdamped Brownian motion of proteins in water with the help of experimental Single-Molecule Tracking data.
+This is a GitHub repository created by Mr. Aakash Gupta, Ms. Hruidya Babu and Ms. Jyotirsika Dalal for the purpose of their final project on the course CHEM7870 offered by C&amp;CB, Cornell University. The code package aims to simulate the under- or overdamped Brownian motion of proteins in fluids.
 
 # Brownian Motion Simulator: Overdamped & Underdamped Langevin Dynamics
 
@@ -14,7 +14,7 @@ This Python package simulates the Brownian motion of a protein-like particle sus
 - Computes and overlays the **slope of the log-log MSD** plot to characterize the regime (slope ≈ 1 for diffusive regime and ≈ 2 for ballistic regime).
 
 ---
-## Input Simulation Parameters:
+## Input parameters
 
     1.Particle mass (kg)
     2.Particle radius (m)
@@ -29,7 +29,7 @@ This Python package simulates the Brownian motion of a protein-like particle sus
 - `numpy`
 - `matplotlib`
 
-## Running
+## Running the package
 
 Run the script using Python:
 
