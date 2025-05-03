@@ -171,3 +171,6 @@ def main():
     print(f"Estimated slope of log-log MSD: {slope:.3f}")
 
     plot_log_msd(time, msd_total, slope, fit_data)
+
+if __name__ == "__main__":
+    main()
