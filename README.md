@@ -29,7 +29,7 @@ This Python package simulates the Brownian motion of a protein-like particle sus
 - `numpy`
 - `matplotlib`
 
-## Runnning
+## Running
 
 Run the script using Python:
 
