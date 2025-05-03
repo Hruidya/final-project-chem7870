@@ -1,1 +1,3 @@
-#The examples in this folder have been taken directly from literature.
+#The examples in this folder are Single-Molecule Tracking Data of proteins and they have been taken directly from literature.
+#These data have the coordinate evolution of protein molecules in millisecond timescale, therefore, simulating underdamped Brownian motion
+#is not possible in this timescale. In order to obtain underdamped Langevin dynamics, one must go for the femtoseconds or nanoseconds timescale.
