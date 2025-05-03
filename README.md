@@ -26,7 +26,7 @@ Install dependencies via pip if needed:
 ```bash
 pip install numpy matplotlib
 
-Run the script using Python:
+## Run the script using Python:
 
 ```bash
 python msd_analysis_protein.py
