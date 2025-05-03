@@ -14,23 +14,6 @@ This Python package simulates the Brownian motion of a protein-like particle sus
 - Computes and overlays the **slope of the log-log MSD** plot to characterize the regime (slope ≈ 1 for diffusive regime and ≈ 2 for ballistic regime).
 
 ---
-
-## Requirements
-
-- Python 3.x
-- `numpy`
-- `matplotlib`
-
-Install dependencies via pip if needed:
-
-```bash
-pip install numpy matplotlib
-
-## Run the script using Python:
-
-```bash
-python msd_analysis_protein.py
-
 ## Input Simulation Parameters:
 
     1.Particle mass (kg)
@@ -39,3 +22,16 @@ python msd_analysis_protein.py
     4.Timestep dt (seconds)
     5.Total simulation time T (seconds)
     6.Damping regime (yes for underdamped, no for overdamped)
+
+## Requirements
+
+- Python 3.x
+- `numpy`
+- `matplotlib`
+
+## Runnning
+
+Run the script using Python:
+
+```bash
+python msd_analysis_protein.py
