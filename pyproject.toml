@@ -3,7 +3,9 @@ requires = ["setuptools"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "brownian_motion"
+description = "Brownian motion simulator using Langevin dynamics"
+readme = "README.md"
+license = { text = "MIT" }
 version = "0.0.1"
 authors = [
     { name = "Aakash Gupta", email = "ag2636@cornell.edu" },
